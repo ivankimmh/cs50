@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <h1>Buy</h1>
+    <form action="/buy" method="post">
+        <fieldset>
+            <div class="form-group">
+                <label for="symbol_search">Symbol Search</label>
+                <input autocomplete="off" autofocus class="form-control" name="symbol_search" placeholder="symbol_search" type="text">
+            </div>
+
+            <br>
+
+            <button class="btn btn-primary" type="submit">Search</button>
+            <div class="form-group">
+                <label for="symbol">Symbol</label>
+                <input class="form-control" id="symbol" name="symbol" readonly type="text" value="{{ stock_info.symbol }}">
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" id="name" name="name" readonly type="text" value="{{ stock_info.name }}">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input class="form-control" id="price" name="price" readonly type="text" value="{{ stock_info.price | usd }}">
+            </div>
+            <h2>Want to buy the stock??</h2>
+            <div class="form-group">
+                <label for="shares">Shares</label>
+                <input class="form-control" id="shares" name="shares" type="number">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Buy</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

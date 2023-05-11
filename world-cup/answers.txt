@@ -1,0 +1,27 @@
+Times:
+
+10 simulations: 0m0.029s
+100 simulations: 0m0.029s
+1000 simulations: 0m0.035s
+10000 simulations: 0m0.119s
+100000 simulations: 0m0.703s
+1000000 simulations: 0m7.247s
+
+Questions:
+
+Which predictions, if any, proved incorrect as you increased the number of simulations?:
+
+I dont think it goes wrong if the number has been increased. As the number of sumulations increased,
+thepredictions bcame more accurate and stable i guess.
+There were no incorrect predictions as the numver of simulations increased.
+However, the prediction is just an opinion which is based on data.
+It could be a part of reference, but the answer.
+
+Suppose you're charged a fee for each second of compute time your program uses.
+After how many simulations would you call the predictions "good enough"?:
+
+I think 10000 simulations to get reasonably accurate predictions at this simulation
+as a good starting point. Of course the number of simulations required to achieve "fair enough" point
+to make decision such as the complexity of the tournament, players, relative record and so on.
+But based on the numbers I have here, 10000 simulations can be a good start before considering other things
+as it shows quite big difference compare to lower number and faster than bigger number.
