@@ -1,4 +1,5 @@
 import functools
+
 """
 문제 설명
 0 또는 양의 정수가 주어졌을 때, 정수를 이어 붙여 만들 수 있는 가장 큰 수를 알아내 주세요.
@@ -13,29 +14,30 @@ numbers의 원소는 0 이상 1,000 이하입니다.
 정답이 너무 클 수 있으니 문자열로 바꾸어 return 합니다.
 """
 
+
 def compare(x, y):
     t1 = x + y
     t2 = y + x
     print(int(t1), int(t2), int(t1) > int(t2))
     print(int(t1), int(t2), int(t1) < int(t2))
     print("value :", (int(t1) > int(t2)) - (int(t1) < int(t2)))
-    
+
     # true = 1, false = 0
     return (int(t1) > int(t2)) - (int(t1) < int(t2))  #  t1이 크다면 1, 작다면 -1, 같으면 0
 
-    
 
 def solution(numbers):
-    answer = ''
+    answer = ""
 
-    n = [str(x) for x in numbers] # 리스트 컴프리헨션 문자 배열로 변환하여 n 에 저장
+    n = [str(x) for x in numbers]  # 리스트 컴프리헨션 문자 배열로 변환하여 n 에 저장
     print("before sorted: ", n)
     n = sorted(n, key=functools.cmp_to_key(compare), reverse=True)
     print("after sorted: ", n)
-    answer = str(int(''.join(n)))
-    answer2 = ''.join(n)
+    answer = str(int("".join(n)))
+    answer2 = "".join(n)
 
     return answer, answer2
+
 
 # 예시 데이터 1
 numbers1 = [6, 10, 2]
