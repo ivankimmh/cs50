@@ -50,18 +50,19 @@ def solution(begin, target, words):
     while queue:
         word, step = queue.popleft()
 
+        print("start queue: ", queue)
         if word == target:
-            return step  # 시작 단어가 타겟인 경우 바로 0 반환
+            return step  # 시작 단어가 타겟인 경우 바로 step 수 반환
 
         for w in words:
             if w not in visited and compare_letter(word, w):
                 visited.add(w)
                 queue.append((w, step + 1))  # 단어 변환 횟수 추가
-                print(queue)
+
     return 0
 
 
 begin = "hit"
 target = "cog"
-words = ["hot", "dot", "dog", "lot", "log", "cog"]
+words = ["hot", "cog", "dot", "dog", "lot", "log"]
 print(solution(begin, target, words))  # 4

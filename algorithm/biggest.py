@@ -30,13 +30,14 @@ def solution(numbers):
     answer = ""
 
     n = [str(x) for x in numbers]  # 리스트 컴프리헨션 문자 배열로 변환하여 n 에 저장
-    print("before sorted: ", n)
-    n = sorted(n, key=functools.cmp_to_key(compare), reverse=True)
-    print("after sorted: ", n)
-    answer = str(int("".join(n)))
-    answer2 = "".join(n)
+    print("before sorted: ", n)  # ['6', '10', '2']
 
-    return answer, answer2
+    n = sorted(n, key=functools.cmp_to_key(compare), reverse=True)
+    print("after sorted: ", n)  # ['6', '2', '10']
+
+    answer = str(int("".join(n)))
+
+    return answer
 
 
 # 예시 데이터 1
