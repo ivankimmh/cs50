@@ -16,8 +16,8 @@ numbers의 원소는 0 이상 1,000 이하입니다.
 
 
 def compare(x, y):
-    t1 = x + y
-    t2 = y + x
+    t1 = x + y  # "10" + "2" = "102"
+    t2 = y + x  # "2" + "10" = "210"
     print(int(t1), int(t2), int(t1) > int(t2))
     print(int(t1), int(t2), int(t1) < int(t2))
     print("value :", (int(t1) > int(t2)) - (int(t1) < int(t2)))

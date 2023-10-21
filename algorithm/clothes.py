@@ -1,4 +1,3 @@
-from collections import defaultdict
 """
 문제 설명
 코니는 매일 다른 옷을 조합하여 입는것을 좋아합니다.
@@ -23,6 +22,9 @@ clothes의 모든 원소는 문자열로 이루어져 있습니다.
 모든 문자열의 길이는 1 이상 20 이하인 자연수이고 알파벳 소문자 또는 '_' 로만 이루어져 있습니다.
 """
 
+from collections import defaultdict
+
+
 def solution(clothes):
     cloth_dict = defaultdict(int)
 
@@ -32,12 +34,19 @@ def solution(clothes):
     total_combinations = 1
 
     for count in cloth_dict.values():
-        total_combinations *= (count + 1)
+        total_combinations *= count + 1
 
     answer = total_combinations - 1
     return answer
 
-clothes = [["round_glasses", "face"], ["black_sunglasses", "face"], ["blue_shirt", "top"], ["jeans", "bottom"], ["long_coat", "outer"]]
+
+clothes = [
+    ["round_glasses", "face"],
+    ["black_sunglasses", "face"],
+    ["blue_shirt", "top"],
+    ["jeans", "bottom"],
+    ["long_coat", "outer"],
+]
 print(solution(clothes))
 
 
@@ -46,7 +55,7 @@ def solution2(clothes):
 
     for c, t in clothes:
         if t not in clothes_type:
-            clothes_type[t] = 2 # 아무것도 입지 않았을 때를 고려 + 1 추가
+            clothes_type[t] = 2  # 아무것도 입지 않았을 때를 고려 + 1 추가
         else:
             clothes_type[t] += 1
 
@@ -55,5 +64,6 @@ def solution2(clothes):
         cnt *= num
 
     return cnt - 1
+
 
 print(solution2(clothes))
