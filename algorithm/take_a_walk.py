@@ -84,21 +84,16 @@ park	routes	result
 
 
 def solution(park, routes):
-    answer = []
-    # 세로 H, 가로 W
-    # (H-1, W-1) : 남북이 x 축, 동서가 y 축?
     directions = {
         "N": (-1, 0),
         "S": (1, 0),
         "E": (0, 1),
         "W": (0, -1),
     }
-    # park 의 길이가 y 축
-    # park[0] 의 길이가 x 축
-    print("세로, 가로", len(park), len(park[0]))
+    start_x, start_y = None, None
+
     for i in range(len(park)):
         for j in range(len(park[i])):
-            print(i, j, park[i][j])
             if park[i][j] == "S":
                 start_x = j
                 start_y = i
@@ -107,24 +102,15 @@ def solution(park, routes):
             break
 
     position = (start_y, start_x)
-    print("시작점의 위치는 (H, W):", position)
 
     for route in routes:
-        valid_move = True
-        # routes 에 있는 길을 쪼개서 방향과 거리를 체크
         direction, distance = route.split(" ")
-        print("입력값: ", direction, distance)
         dy, dx = directions[direction]
-        # "이쪽": (a, b)
-        print("가야하는 방향 (H, W): ", dy, dx)
 
-        # position update
-        print("기존 위치: ", position[0], position[1])
+        valid_move = True
         new_y = position[0] + dy * int(distance)
         new_x = position[1] + dx * int(distance)
-        print("바뀔 위치: ", new_y, new_x)
         if not (0 <= new_y < len(park) and 0 <= new_x < len(park[0])):
-            print("Out of range!!")
             valid_move = False
         else:
             track_y = position[0]
@@ -132,19 +118,14 @@ def solution(park, routes):
             for _ in range(int(distance)):
                 track_y += dy
                 track_x += dx
-                print("트래킹 포지션: ", track_y, track_x)
-                print(park[track_y][track_x])
                 if park[track_y][track_x] == "X":
-                    print("Blocked!!")
                     valid_move = False
                     break
 
         if valid_move:
             position = (new_y, new_x)
-            print("포지션 업데이트 :", position)
 
-    answer = [position[0], position[1]]
-    return answer
+    return [position[0], position[1]]
 
 
 # park = ["SOO", "OOO", "OOO"]
