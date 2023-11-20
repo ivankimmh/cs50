@@ -89,7 +89,27 @@ id_list	report	k	result
 
 
 def solution(id_list, report, k):
-    answer = []
+    reports = {id: set() for id in id_list}
+
+    for r in set(report):
+        user, reported = r.split()
+        reports[user].add(reported)
+
+    reported_count = {id: 0 for id in id_list}
+
+    for user in reports:
+        for reported in reports[user]:
+            reported_count[reported] += 1
+
+    banned_users = set()
+    for user, count in reported_count.items():
+        if count >= k:
+            banned_users.add(user)
+
+    answer = [0] * len(id_list)
+    for i, user in enumerate(id_list):
+        answer[i] = len(reports[user] & banned_users)
+
     return answer
 
 
